@@ -4,5 +4,6 @@
     bottom: 0;
     width: 100%;
     color: rgb(32, 32, 32);
-    text-align: center;
+    text-align: end;
+    font-size: 15px;
   }

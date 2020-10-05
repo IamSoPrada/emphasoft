@@ -1,0 +1,19 @@
+.menu{
+    display: flex;
+    justify-content: center;
+}
+
+.menu__link{
+    display: inline-block;
+    padding: 30px;
+    text-decoration: none;
+    color: black;
+    border-radius: 8px;
+    margin-top: 20px;
+    font-size: 25px;
+    line-height: 24px;
+    font-weight: 700;
+    border-radius: 8px;
+    cursor: pointer;
+    background-color: #e9e9e9;
+}
