@@ -1,7 +1,6 @@
 .container{
     width: 800px;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 0 auto;
 }
 .users__table {
     display: flex;
@@ -13,7 +12,8 @@
 .table{
     margin-top: 30px;
     width: 100%;
-    flex-wrap: wrap;
+    display: table;
+
 }
 .table__head{
     background-color: rgb(195, 195, 195);
