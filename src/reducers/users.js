@@ -17,7 +17,7 @@ const appUsers = (state, action) => {
         case FETCH_USERS_REQUEST:
             return {
                 users: [],
-                loading: false,
+                loading: true,
                 error: null
             }
         case FETCH_USERS_SUCCESS:

@@ -1,10 +1,6 @@
-const axios = require('axios');
-
-
-axios.defaults.baseURL = 'https://emphasoft-test-assignment.herokuapp.com/';
-
 export default class UsersService {
 
+    baseURL = 'https://emphasoft-test-assignment.herokuapp.com/'
 
     getResource = async (url) => {
 
@@ -13,10 +9,9 @@ export default class UsersService {
         const conf = {
             headers: {
                 "Authorization": `Token ${AUTH_TOKEN}`,
-                
             }
         }
-        const res = await axios.get(url, conf);
+        const res = await fetch(`${this.baseURL}${url}`, conf);
         if (!res.ok) {
             throw new Error(`Could not fetch this url + received ${res.status}`)
         }
