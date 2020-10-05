@@ -1,15 +1,18 @@
+.container{
+    width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
 .users__table {
-    margin-top: 20px;
     display: flex;
-    justify-content: center;
     flex-direction: column;
-    width: 100vw
+    align-items: center;
+    justify-content: center;
 }
 
 .table{
     margin-top: 30px;
-    
-    display: block;
+    width: 100%;
     flex-wrap: wrap;
 }
 .table__head{
@@ -23,6 +26,7 @@
 .users__form{
     display: flex;
     align-items: center;
+    width: 100%;
 }
 .users__form__input {
     color: #282828;

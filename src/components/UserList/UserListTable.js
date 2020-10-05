@@ -23,41 +23,44 @@ const UserListTable = ({ users, find }) => {
                     content='login page'
                 />
             </Helmet>
+            <div className={styles.container}>
 
-            <div className={styles.users__table}>
-                <h2>Пользователи</h2>
-                <div className={styles.users__form}>
-                    <input className={styles.users__form__input} type="text" onChange={e => setFindUsername(e.target.value)} />
-                    <button className={styles.users__form__button} onClick={() => find(findUsername)}>Найти</button>
+
+                <div className={styles.users__table}>
+                    <h2>Пользователи</h2>
+                    <div className={styles.users__form}>
+                        <input className={styles.users__form__input} type="text" onChange={e => setFindUsername(e.target.value)} />
+                        <button className={styles.users__form__button} onClick={() => find(findUsername)}>Найти</button>
+                    </div>
+
+                    <table className={styles.table}>
+                        <thead >
+                            <tr >
+                                <th className={styles.table__head}>#</th>
+                                <th className={styles.table__head}>ID</th>
+                                <th className={styles.table__head}>Логин</th>
+                                <th className={styles.table__head}>Имя</th>
+                                <th className={styles.table__head}>Фамилия</th>
+                            </tr>
+                        </thead>
+                        <tbody className="table__text">
+                            {
+                                users.map((user, idx) => {
+                                    const { id, username, first_name, last_name } = user
+                                    return (
+                                        <tr key={id}>
+                                            <td className={styles.table__row}>{idx + 1}</td>
+                                            <td className={styles.table__row}>{id}</td>
+                                            <td className={styles.table__row}>{username}</td>
+                                            <td className={styles.table__row}>{first_name}</td>
+                                            <td className={styles.table__row}>{last_name}</td>
+                                        </tr>
+                                    )
+                                })
+                            }
+                        </tbody>
+                    </table>
                 </div>
-                
-                <table className={styles.table}>
-                    <thead >
-                        <tr >
-                            <th className={styles.table__head}>#</th>
-                            <th className={styles.table__head}>ID</th>
-                            <th className={styles.table__head}>Логин</th>
-                            <th className={styles.table__head}>Имя</th>
-                            <th className={styles.table__head}>Фамилия</th>
-                        </tr>
-                    </thead>
-                    <tbody className="table__text">
-                        {
-                            users.map((user, idx) => {
-                                const { id, username, first_name, last_name } = user
-                                return (
-                                    <tr key={id}>
-                                        <td className={styles.table__row}>{idx + 1}</td>
-                                        <td className={styles.table__row}>{id}</td>
-                                        <td className={styles.table__row}>{username}</td>
-                                        <td className={styles.table__row}>{first_name}</td>
-                                        <td className={styles.table__row}>{last_name}</td>
-                                    </tr>
-                                )
-                            })
-                        }
-                    </tbody>
-                </table>
             </div>
         </React.Fragment>
 
@@ -85,7 +88,7 @@ class UsersListContainer extends Component {
 }
 
 const mapStateToProps = ({ appUsers: { users, loading, error }, appFind: { findUsername } }) => {
-    
+
     return {
         users: users.filter(user => user.username.includes(findUsername)),
         loading,
