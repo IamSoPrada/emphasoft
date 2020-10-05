@@ -1,5 +1,7 @@
 import axios from "axios"
 import { setAlert } from "./alert"
+
+
 import {
     SIGNUP_SUCCESS,
     SIGNUP_FAIL,
@@ -8,17 +10,21 @@ import {
     LOGOUT
 } from "./types"
 
-export const login = (email, password) => async dispatch => {
+
+axios.defaults.baseURL = 'https://emphasoft-test-assignment.herokuapp.com/';
+
+export const login = (username, password) => async dispatch => {
     const conf = {
         headers: {
+            "Accept": "application/json",
             'Content-Type': "application/json"
         }
     }
 
-    const body = JSON.stringify({ email, password });
+    const body = JSON.stringify({ username, password } );
 
     try {
-        const res = await axios.post(`${process.env.EMPHASOFT_API_URL}/api-token-auth/`, body, conf)
+        const res = await axios.post("api-token-auth/", body, conf)
         dispatch({
             type: LOGIN_SUCCESS,
             payload: res.data
@@ -33,22 +39,21 @@ export const login = (email, password) => async dispatch => {
     }
 }
 
-export const signup = ({ name, email, password, confirm_password }) => async dispatch => {
+export const signup = ({ id, username, first_name, last_name, password, is_active }) => async dispatch => {
     const conf = {
         headers: {
-            'Content-Type': "application/json"
+            /* 'Authorization': 'Token' + localStorage.getItem('token'), */
+            'Content-Type': "application/json",
         }
     }
-    const body = JSON.stringify({ name, email, password, confirm_password })
+    const body = JSON.stringify({ id, username, first_name, last_name, password, is_active })
 
     try {
-        const res = await axios.post(`${process.env.EMPHASOFT_API_URL}/api/v1/users/`, body, conf)
+        const res = await axios.post("api/v1/users/", body, conf)
         dispatch({
             type: SIGNUP_SUCCESS,
-            payload: res.data
+            payload: res.data,
         })
-        //сразу же залогинимся
-        dispatch(login(email, password))
     } catch (err) {
         dispatch({
             type: SIGNUP_FAIL

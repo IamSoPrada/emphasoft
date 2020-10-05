@@ -3,7 +3,7 @@ import React from 'react'
  const ErrorIndicator = () => {
     return (
         <div>
-            <h1>Error has occured</h1>
+            <h1>Error has occurred</h1>
         </div>
     )
 }

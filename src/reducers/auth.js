@@ -20,31 +20,34 @@ const appAuth = (state, action) => {
 
     switch (type) {
         case LOGIN_SUCCESS:
-            localStorage.setItem('token', payload.access);
+            localStorage.setItem('token', payload.token);
             return {
                 ...state,
                 authenticated: true,
                 loading: false,
-                token: payload.access
+                token: payload.token
             }
         case SIGNUP_SUCCESS:
+            localStorage.setItem('token', payload.token);
             return {
                 ...state,
                 authenticated: false,
-                loading: true
+                loading: true,
+                token: payload.token
             }
         case SIGNUP_FAIL:
         case LOGIN_FAIL:
         case LOGOUT:
-            localStorage.removeItem('token');
+            localStorage.removeItem('token')
             return {
                 ...state,
                 token: null,
                 authenticated: false,
                 loading: false
+
             }
         default:
-            return state;
+            return state
     }
 
 }

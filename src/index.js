@@ -7,14 +7,20 @@ import App from './App';
 import ErrorBoundry from "./error-boundry"
 
 import store from "./store"
+import UsersService from "./services/usersService"
+import { UsersServiceProvider } from "./users-service-context"
+
+const usersService = new UsersService();
 
 ReactDOM.render(
   <Provider store={store}>
     <React.StrictMode>
       <ErrorBoundry>
-        <Router>
-          <App />
-        </Router>
+        <UsersServiceProvider value={usersService}>
+          <Router>
+            <App />
+          </Router>
+        </UsersServiceProvider>
       </ErrorBoundry>
     </React.StrictMode>
   </Provider>,
