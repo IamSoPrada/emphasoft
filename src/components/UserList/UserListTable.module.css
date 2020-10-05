@@ -57,3 +57,6 @@
     background-color: #c1c1c1;
     transition: all 0.2s ;
 }
+.users__form__button:hover{
+    transform: scale(1.1);
+}
