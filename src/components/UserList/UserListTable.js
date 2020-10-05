@@ -24,10 +24,10 @@ const UserListTable = ({ users, find }) => {
                 />
             </Helmet>
             <div className={styles.container}>
-
+            <h2>Поиск по username:</h2>
 
                 <div className={styles.users__table}>
-                    <h2>Пользователи</h2>
+                    
                     <div className={styles.users__form}>
                         <input className={styles.users__form__input} type="text" onChange={e => setFindUsername(e.target.value)} />
                         <button className={styles.users__form__button} onClick={() => find(findUsername)}>Найти</button>
