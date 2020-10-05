@@ -7,7 +7,7 @@ import { login } from "../actions/auth"
 import styles from "./Login.module.css"
 
 
-const Login = ({ /* setAlert */  login, authenticated }) => {
+const Login = ({ login, authenticated }) => {
     const [formData, setFormData] = useState({
         username: '',
         password: ''
@@ -72,13 +72,14 @@ const Login = ({ /* setAlert */  login, authenticated }) => {
 };
 
 Login.propTypes = {
-/*     setAlert: PropTypes.func.isRequired, */
     login: PropTypes.func.isRequired,
     authenticated: PropTypes.bool
 };
 
-const mapStateToProps = state => ({
-    authenticated: state.appAuth.authenticated
-});
+const mapStateToProps = ({ appAuth: { authenticated } }) => {
+    return {
+        authenticated
+    }
+};
 
 export default connect(mapStateToProps, { login })(Login);

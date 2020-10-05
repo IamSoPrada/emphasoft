@@ -1,11 +1,27 @@
 import React from 'react'
-import "./Header.css"
-const Header = () => {
+import { Redirect, Link } from "react-router-dom"
+import styles from "./Header.module.css"
+import { logout } from "../../actions/auth"
+import {connect} from "react-redux"
+
+const Header = ({logout, authenticated}) => {
+
     return (
-        <div className="header">
-            <h1 className="header__title"> Emphasoft Test Assignment</h1>
+        <div className={styles.header}>
+            <Link className={styles.header__title} to='/'> Emphasoft Test Assignment</Link>
+            {
+                authenticated ? <button onClick={()=> logout()} className={styles.header__close__btn}>Выйти</button> : null
+            }
         </div>
     )
 }
 
-export default Header;
+const mapStateToProps = ({appAuth:{token}}) => {
+    return {
+        authenticated: token
+    }
+}
+
+
+
+export default connect(mapStateToProps, {logout})(Header);

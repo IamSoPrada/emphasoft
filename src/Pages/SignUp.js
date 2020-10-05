@@ -2,13 +2,12 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { Link, Redirect } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
-import { setAlert } from '../actions/alert';
 import { signup } from '../actions/auth';
 import PropTypes from 'prop-types';
 import { v4 as uuid } from "uuid"
 import styles from "./Login.module.css"
 
-const SignUp = ({ setAlert, signup, authenticated }) => {
+const SignUp = ({ signup, authenticated }) => {
     const id_user = uuid()
 
     const [formData, setFormData] = useState({
@@ -100,7 +99,6 @@ const SignUp = ({ setAlert, signup, authenticated }) => {
 };
 
 SignUp.propTypes = {
-    setAlert: PropTypes.func.isRequired,
     signup: PropTypes.func.isRequired,
     authenticated: PropTypes.bool
 };
@@ -109,4 +107,4 @@ const mapStateToProps = state => ({
     authenticated: state.appAuth.authenticated
 })
 
-export default connect(mapStateToProps, { setAlert, signup })(SignUp);
+export default connect(mapStateToProps, { signup })(SignUp);

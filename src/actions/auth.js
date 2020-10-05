@@ -1,7 +1,4 @@
 import axios from "axios"
-import { setAlert } from "./alert"
-
-
 import {
     SIGNUP_SUCCESS,
     SIGNUP_FAIL,
@@ -29,20 +26,16 @@ export const login = (username, password) => async dispatch => {
             type: LOGIN_SUCCESS,
             payload: res.data
         })
-        dispatch(setAlert("Вы авторизованы", "success"))
     } catch (err) {
         dispatch({
             type: LOGIN_FAIL
         })
-
-        dispatch(setAlert("Ошибка авторизации", "error"))
     }
 }
 
 export const signup = ({ id, username, first_name, last_name, password, is_active }) => async dispatch => {
     const conf = {
         headers: {
-            /* 'Authorization': 'Token' + localStorage.getItem('token'), */
             'Content-Type': "application/json",
         }
     }
@@ -58,12 +51,11 @@ export const signup = ({ id, username, first_name, last_name, password, is_activ
         dispatch({
             type: SIGNUP_FAIL
         })
-        dispatch(setAlert("Ошибка авторизации", "error"))
+
     }
 
 }
 
 export const logout = () => dispatch => {
-    dispatch(setAlert("Вы вышли из аккаунта", "success"))
     dispatch({ type: LOGOUT })
 }
