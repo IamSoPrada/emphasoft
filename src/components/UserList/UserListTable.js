@@ -38,7 +38,7 @@ const UserListTable = ({ users, find }) => {
                             <tr >
                                 <th className={styles.table__head}>#</th>
                                 <th className={styles.table__head}>ID</th>
-                                <th className={styles.table__head}>Логин</th>
+                                <th className={styles.table__head}>Username</th>
                                 <th className={styles.table__head}>Имя</th>
                                 <th className={styles.table__head}>Фамилия</th>
                             </tr>
