@@ -18,11 +18,11 @@ const UserListTable = ({ users, find, sort, sortedUsers }) => {
 
     const [findUsername, setFindUsername] = useState("")
 
-    const onSort = () => {
+/*     const onSort = () => {
 
         let res = _.orderBy(users, ['id', 'id'], ['asc', 'desc'])
         sort(res)
-    }
+    } */
 
     return (
         <React.Fragment>
@@ -44,7 +44,7 @@ const UserListTable = ({ users, find, sort, sortedUsers }) => {
                     <thead >
                         <tr >
                             <th>#</th>
-                            <th onClick={() => onSort()} style={{ cursor: "pointer" }}>ID</th>
+                            <th /* onClick={() => onSort()} */ style={{ cursor: "pointer" }}>ID</th>
                             <th>Username</th>
                             <th>Имя</th>
                             <th>Фамилия</th>
