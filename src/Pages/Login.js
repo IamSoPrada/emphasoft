@@ -64,9 +64,9 @@ const Login = ({ login, authenticated }) => {
                 <button type='submit' className={styles.auth__form__button}>Войти</button>
 
             </form>
-            <p className={styles.auth__authtext}>
+{/*             <p className={styles.auth__authtext}>
                 Нет аккаунта? <Link className='auth__authtext__link' to='/signup'>Зарегистрироваться</Link>
-            </p>
+            </p> */}
         </div>
     );
 };
