@@ -1,4 +1,4 @@
-import {SORTED_BY_ID} from "./types"
+import { SORTED_BY_ID } from "./types"
 
 export const sortById = (sorted) => {
 
@@ -6,5 +6,5 @@ export const sortById = (sorted) => {
         type: SORTED_BY_ID,
         payload: sorted
     }
-    
+
 }

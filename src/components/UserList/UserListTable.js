@@ -14,15 +14,16 @@ import { sortById } from "../../actions/sort"
 import _ from "lodash"
 
 
-const UserListTable = ({ users, find, sort, sortedUsers }) => {
+const UserListTable = ({ users, find, sortAsc }) => {
 
     const [findUsername, setFindUsername] = useState("")
 
-/*     const onSort = () => {
-
-        let res = _.orderBy(users, ['id', 'id'], ['asc', 'desc'])
-        sort(res)
-    } */
+    const onSort = (e) => {
+        let res;
+        e.target.dataset.id === "asc" ?
+            res = _.orderBy(users, ['id', 'id'], ['asc', 'desc']) : res = _.orderBy(users, ['id', 'id'], ['desc', 'asc'])
+        sortAsc(res)
+    }
 
     return (
         <React.Fragment>
@@ -44,7 +45,8 @@ const UserListTable = ({ users, find, sort, sortedUsers }) => {
                     <thead >
                         <tr >
                             <th>#</th>
-                            <th /* onClick={() => onSort()} */ style={{ cursor: "pointer" }}>ID</th>
+                            <th style={{ cursor: "pointer" }}><small data-id="asc" onClick={(e) => onSort(e)}>▲</small>
+                                <small data-id="desc" onClick={(e) => onSort(e)}>▼</small> ID </th>
                             <th>Username</th>
                             <th>Имя</th>
                             <th>Фамилия</th>
@@ -83,7 +85,7 @@ class UsersListContainer extends Component {
     }
 
     render() {
-        const { users, loading, error, find, sort, sortedUsers } = this.props
+        const { users, loading, error, find, sortAsc } = this.props
 
         if (loading) {
             return <Spinner />
@@ -91,18 +93,18 @@ class UsersListContainer extends Component {
         if (error) {
             return <ErrorIndicator />
         }
-        return <UserListTable users={users} find={find} sort={sort} sortedUsers={sortedUsers} />
+        return <UserListTable users={users} find={find} sortAsc={sortAsc} />
     }
 }
 
-const mapStateToProps = ({ appUsers: { users, loading, error }, appFind: { findUsername }, appSort: { sortedUsers } }) => {
+const mapStateToProps = ({ appUsers: { users, loading, error }, appFind: { findUsername }, }) => {
 
     return {
-        users: _.orderBy(users.filter(user => user["username"].toLowerCase().includes(findUsername.toLowerCase())), ['id', 'id'], ['asc', 'desc']),
+        users: users.filter(user => user["username"].toLowerCase().includes(findUsername.toLowerCase())),
         loading,
         error,
         findUsername,
-        sortedUsers
+
     }
 }
 
@@ -114,7 +116,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     return {
         fetchUsers: fetchUsers(usersService, dispatch),
         find: (input) => dispatch(onFindUsername(input)),
-        sort: (sorted) => dispatch(sortById(sorted))
+        sortAsc: (sorted) => dispatch(sortById(sorted))
     }
 
 }
