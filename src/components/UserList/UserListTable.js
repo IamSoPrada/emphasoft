@@ -40,7 +40,10 @@ const UserListTable = ({ users, find, sortAsc }) => {
                     <input className={styles.users__form__input} type="text" onChange={e => setFindUsername(e.target.value)} />
                     <button className={styles.users__form__button} onClick={() => find(findUsername)}>Найти</button>
                 </div>
-
+                <div className={styles.users__sort_btns}>
+                    <button className={styles.users__sort_btn}><small data-id="asc" onClick={(e) => onSort(e)}>▲</small></button>
+                    <button className={styles.users__sort_btn}><small data-id="desc" onClick={(e) => onSort(e)}>▼</small></button>
+                </div>
                 <table>
                     <thead >
                         <tr >
