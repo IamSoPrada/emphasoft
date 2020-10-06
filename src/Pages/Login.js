@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Redirect, Link } from "react-router-dom"
+import { Redirect, /* Link */ } from "react-router-dom"
 import { connect } from "react-redux"
 import { Helmet } from "react-helmet"
 import PropTypes from "prop-types"
