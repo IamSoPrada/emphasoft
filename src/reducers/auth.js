@@ -13,7 +13,7 @@ const appAuth = (state, action) => {
     if (state === undefined) {
         return {
             token: localStorage.getItem('token'),
-            authenticated: null,
+            authenticated: localStorage.getItem('token') ? true : null,
             loading: false
         }
     }

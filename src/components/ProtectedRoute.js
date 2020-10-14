@@ -17,8 +17,8 @@ class ProtectedRoute extends Component {
     }
 }
 
-const mapStateToProps = state => ({
-    token: state.appAuth.token
+const mapStateToProps = ({ appAuth: { token } }) => ({
+    token: token
 });
 
 export default connect(mapStateToProps, null)(ProtectedRoute);
