@@ -1,2 +1,2 @@
-import UserListTable from "./UserListTable"
-export default UserListTable;
+import UsersListContainer from "./UserListTable"
+export default UsersListContainer;
