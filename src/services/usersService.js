@@ -13,7 +13,7 @@ export default class UsersService {
         }
         const res = await fetch(`${this.baseURL}${url}`, conf);
         if (!res.ok) {
-            throw new Error(`Could not fetch this url + received ${res.status}`)
+            throw new Error(`Could not fetch this url, received ${res.status}`)
         }
         return await res.json()
     }
