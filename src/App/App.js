@@ -1,7 +1,7 @@
 import React from 'react'
 import { Route, Switch } from "react-router-dom"
 
-import {/*  HomePage, */ Login, SignUp } from "../Pages/"
+import { HomePage, Login, SignUp } from "../Pages/"
 import ProtectedRoute from "../components/ProtectedRoute"
 import UserListTable from "../components/UserList"
 import Footer from "../components/Footer/Footer"
@@ -17,13 +17,13 @@ const App = () => {
                     component={Login}
                     exact />
                 <ProtectedRoute path="/"
+                    component={HomePage}
+                    exact
+                />
+                <ProtectedRoute path="/users"
                     component={UserListTable}
                     exact
                 />
-{/*                 <ProtectedRoute path="/users"
-                    component={UserListTable}
-                    exact
-                /> */}
                 <Route path="/signup"
                     component={SignUp}
                 />
