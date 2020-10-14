@@ -20,7 +20,7 @@ const App = () => {
                     component={HomePage}
                     exact
                 />
-                <ProtectedRoute path="/users"
+                <Route path="/users"
                     component={UserListTable}
                     exact
                 />
