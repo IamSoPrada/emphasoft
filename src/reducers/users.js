@@ -9,7 +9,7 @@ const appUsers = (state, action) => {
     const { type, payload } = action
     if (state === undefined) {
         return {
-            users: [],
+            users: localStorage.getItem("users") ? JSON.parse(localStorage.getItem("users")) : [],
             loading: true,
             error: null
         }
@@ -22,6 +22,7 @@ const appUsers = (state, action) => {
                 error: null
             }
         case FETCH_USERS_SUCCESS:
+            localStorage.setItem("users", JSON.stringify(payload))
             return {
                 users: payload,
                 loading: false,

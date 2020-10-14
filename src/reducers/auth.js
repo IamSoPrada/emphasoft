@@ -39,6 +39,7 @@ const appAuth = (state, action) => {
         case LOGIN_FAIL:
         case LOGOUT:
             localStorage.removeItem('token')
+            localStorage.removeItem('users')
             return {
                 ...state,
                 token: null,
