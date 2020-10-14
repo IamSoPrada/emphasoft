@@ -3,7 +3,7 @@ import { Route, Switch } from "react-router-dom"
 
 import { HomePage, Login, SignUp } from "../Pages/"
 import ProtectedRoute from "../components/ProtectedRoute"
-import UsersListTable from "../components/UserList"
+import UserListTable from "../components/UserList"
 import Footer from "../components/Footer/Footer"
 import Header from "../components/Header/Header"
 import "./App.css"
@@ -21,7 +21,7 @@ const App = () => {
                     exact
                 />
                 <ProtectedRoute path="/users"
-                    component={UsersListTable}
+                    component={UserListTable}
                     exact
                 />
                 <Route path="/signup"
