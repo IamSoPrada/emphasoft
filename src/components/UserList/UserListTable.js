@@ -88,7 +88,7 @@ class UsersListContainer extends Component {
     }
 
     render() {
-        const { users, loading, error, find, sortAsc } = this.props
+        const { users, loading, error, find, sortAsc, authenticated } = this.props
 
         if (loading) {
             return <Spinner />
@@ -96,18 +96,18 @@ class UsersListContainer extends Component {
         if (error) {
             return <ErrorIndicator />
         }
-        return <UserListTable users={users} find={find} sortAsc={sortAsc} />
+        return <UserListTable authenticated={authenticated} users={users} find={find} sortAsc={sortAsc} />
     }
 }
 
-const mapStateToProps = ({ appUsers: { users, loading, error }, appFind: { findUsername }, appAuth : {token} }) => {
+const mapStateToProps = ({ appUsers: { users, loading, error }, appFind: { findUsername }, appAuth : {authenticated} }) => {
 
     return {
         users: users.filter(user => user["username"].toLowerCase().includes(findUsername.toLowerCase())),
         loading,
         error,
         findUsername,
-        token
+        authenticated
     }
 }
 

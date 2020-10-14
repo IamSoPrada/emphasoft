@@ -7,7 +7,7 @@ class ProtectedRoute extends Component {
         const Component = this.props.component;
 
 
-        const isAuthenticated = this.props.token;
+        const isAuthenticated = this.props.authenticated;
 
         return isAuthenticated ? (
             <Component />
@@ -17,8 +17,8 @@ class ProtectedRoute extends Component {
     }
 }
 
-const mapStateToProps = ({ appAuth: { token } }) => ({
-    token: token
+const mapStateToProps = ({ appAuth: { authenticated } }) => ({
+    authenticated
 });
 
 export default connect(mapStateToProps, null)(ProtectedRoute);
