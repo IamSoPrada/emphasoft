@@ -100,14 +100,14 @@ class UsersListContainer extends Component {
     }
 }
 
-const mapStateToProps = ({ appUsers: { users, loading, error }, appFind: { findUsername }, }) => {
+const mapStateToProps = ({ appUsers: { users, loading, error }, appFind: { findUsername }, appAuth : {token} }) => {
 
     return {
         users: users.filter(user => user["username"].toLowerCase().includes(findUsername.toLowerCase())),
         loading,
         error,
         findUsername,
-
+        token
     }
 }
 
