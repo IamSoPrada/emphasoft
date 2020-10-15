@@ -41,6 +41,5 @@ const fetchUsers = (usersService, dispatch) => () => {
 } */
 
 export {
-    fetchUsers,
-    
+    fetchUsers
 }

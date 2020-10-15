@@ -1,7 +1,7 @@
 import React from 'react'
 import { Route, Switch } from "react-router-dom"
 
-import { HomePage, Login, SignUp } from "../Pages/"
+import { HomePage, Login, CreateUser } from "../Pages/"
 import ProtectedRoute from "../components/ProtectedRoute"
 import UsersListContainer from "../components/UserList"
 import Footer from "../components/Footer/Footer"
@@ -24,8 +24,8 @@ const App = () => {
                     component={UsersListContainer}
                     exact
                 />
-                <Route path="/signup"
-                    component={SignUp}
+                <ProtectedRoute path="/create"
+                    component={CreateUser}
                 />
             </Switch>
             <Footer />

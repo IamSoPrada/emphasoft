@@ -1,10 +1,10 @@
 import {
-    LOGIN_SUCCESS,
-    LOGIN_FAIL,
-    LOGOUT
+    CREATE_USER_SUCCESS,
+    CREATE_USER_FAIL,
 } from "../actions/types"
 
-const appAuth = (state, action) => {
+
+const appCrud = (state, action) => {
     const { type, payload } = action
     if (state === undefined) {
         return {
@@ -13,32 +13,25 @@ const appAuth = (state, action) => {
             loading: false
         }
     }
-
-    switch (type) {
-        case LOGIN_SUCCESS:
+    switch(type){
+        case CREATE_USER_SUCCESS:
             localStorage.setItem('token', payload.token);
             return {
                 ...state,
-                authenticated: true,
+                authenticated: localStorage.getItem('token') ? true : null,
                 loading: false,
                 token: payload.token
-            }
-        
-        case LOGIN_FAIL:
-        case LOGOUT:
-            localStorage.removeItem('token')
-            localStorage.removeItem('users')
+                }
+        case CREATE_USER_FAIL:
             return {
                 ...state,
-                token: null,
-                authenticated: false,
-                loading: false
-
+                error: true
             }
+
         default:
             return state
     }
 
 }
 
-export default appAuth;
+export default appCrud;

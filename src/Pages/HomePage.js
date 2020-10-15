@@ -8,6 +8,7 @@ const HomePage = () => {
     return (
         <div className={styles.menu}>
             <Link className={styles.menu__link} to="/users">Загрузить пользователей</Link>
+            <Link className={styles.menu__link} to="/create">Создать</Link>
         </div>
 
     )

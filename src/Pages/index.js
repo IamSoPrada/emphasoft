@@ -1,5 +1,5 @@
 import HomePage from "./HomePage"
 import Login from "./Login"
-import SignUp from "./SignUp"
+import CreateUser from "./CreateUser"
 
-export { HomePage, Login, SignUp }
+export { HomePage, Login, CreateUser }

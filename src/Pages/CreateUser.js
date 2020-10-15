@@ -1,17 +1,15 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { Link, Redirect } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
-import { signup } from '../actions/auth';
+import { create } from '../actions/crud';
 import PropTypes from 'prop-types';
-import { v4 as uuid } from "uuid"
+
 import styles from "./Login.module.css"
 
-const SignUp = ({ signup, authenticated }) => {
-    const id_user = uuid()
+const CreateUser = ({ create}) => {
+    
 
     const [formData, setFormData] = useState({
-        id: id_user,
         username: '',
         first_name: '',
         last_name: '',
@@ -20,22 +18,19 @@ const SignUp = ({ signup, authenticated }) => {
     });
 
 
-    const { id, username, first_name, last_name, password, is_active } = formData;
+    const { username, first_name, last_name, password, is_active } = formData;
 
     const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
 
     const onSubmit = e => {
         e.preventDefault();
-        signup({ id, username, first_name, last_name, password, is_active });
+        create({  username, first_name, last_name, password, is_active });
     };
-
-    if (authenticated)
-        return <Redirect to='/home' />;
 
     return (
         <div className={styles.auth}>
             <Helmet>
-                <title>Регистрация</title>
+                <title>Создать аккаунт</title>
                 <meta
                     name='description'
                     content='sign up page'
@@ -84,27 +79,22 @@ const SignUp = ({ signup, authenticated }) => {
                         name='last_name'
                         value={last_name}
                         onChange={e => onChange(e)}
-
                     />
                 </div>
-
-                <button className={styles.auth__form__button}>Регистарция</button>
+                <button className={styles.auth__form__button}>Отправить</button>
             </form>
-            <p className={styles.auth__authtext}>
-                Уже есть аккаунт? <Link className='auth__authtext__link' to='/'>Авторизоваться</Link>
-            </p>
         </div>
     );
 
 };
 
-SignUp.propTypes = {
-    signup: PropTypes.func.isRequired,
+CreateUser.propTypes = {
+    create: PropTypes.func.isRequired,
     authenticated: PropTypes.bool
 };
 
-const mapStateToProps = state => ({
-    authenticated: state.appAuth.authenticated
+const mapStateToProps = ({appAuth: {authenticated}}) => ({
+    authenticated
 })
 
-export default connect(mapStateToProps, { signup })(SignUp);
+export default connect(mapStateToProps, { create })(CreateUser);

@@ -1,7 +1,5 @@
 import axios from "axios"
 import {
-    SIGNUP_SUCCESS,
-    SIGNUP_FAIL,
     LOGIN_SUCCESS,
     LOGIN_FAIL,
     LOGOUT
@@ -33,28 +31,7 @@ export const login = (username, password) => async dispatch => {
     }
 }
 
-export const signup = ({ id, username, first_name, last_name, password, is_active }) => async dispatch => {
-    const conf = {
-        headers: {
-            'Content-Type': "application/json",
-        }
-    }
-    const body = JSON.stringify({ id, username, first_name, last_name, password, is_active })
 
-    try {
-        const res = await axios.post("api/v1/users/", body, conf)
-        dispatch({
-            type: SIGNUP_SUCCESS,
-            payload: res.data,
-        })
-    } catch (err) {
-        dispatch({
-            type: SIGNUP_FAIL
-        })
-
-    }
-
-}
 
 export const logout = () => dispatch => {
     dispatch({ type: LOGOUT })
