@@ -6,8 +6,8 @@ import PropTypes from 'prop-types';
 
 import styles from "./Login.module.css"
 
-const CreateUser = ({ create}) => {
-    
+const CreateUser = ({ create }) => {
+
 
     const [formData, setFormData] = useState({
         username: '',
@@ -24,7 +24,14 @@ const CreateUser = ({ create}) => {
 
     const onSubmit = e => {
         e.preventDefault();
-        create({  username, first_name, last_name, password, is_active });
+        create({ username, first_name, last_name, password, is_active });
+        setFormData({
+            username: '',
+            first_name: '',
+            last_name: '',
+            password: '',
+            is_active: true
+        })
     };
 
     return (
@@ -56,7 +63,7 @@ const CreateUser = ({ create}) => {
                         placeholder='Пароль'
                         name='password'
                         value={password}
-                        pattern = "^(?=.*[A-Z])(?=.*\d).{8,}$"
+                        pattern="^(?=.*[A-Z])(?=.*\d).{8,}$"
                         onChange={e => onChange(e)}
                         required
                     />
@@ -94,7 +101,7 @@ CreateUser.propTypes = {
     authenticated: PropTypes.bool
 };
 
-const mapStateToProps = ({appAuth: {authenticated}}) => ({
+const mapStateToProps = ({ appAuth: { authenticated } }) => ({
     authenticated
 })
 
