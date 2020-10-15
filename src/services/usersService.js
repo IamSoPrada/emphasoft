@@ -23,11 +23,6 @@ export default class UsersService {
         return data
     }
 
-
-    /*     getUser = async (id) => {
-            const user = await this.getResource(`api/v1/users/${id}/`)
-            return user.slice(0, 10);
-        } */
-
+//need create crud func-s
 }
 
