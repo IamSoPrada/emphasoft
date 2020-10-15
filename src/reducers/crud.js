@@ -5,7 +5,7 @@ import {
 
 
 const appCrud = (state, action) => {
-    const { type, payload } = action
+    const { type } = action
     if (state === undefined) {
         return {
             token: localStorage.getItem('token'),
@@ -15,12 +15,10 @@ const appCrud = (state, action) => {
     }
     switch(type){
         case CREATE_USER_SUCCESS:
-            localStorage.setItem('token', payload.token);
             return {
                 ...state,
                 authenticated: localStorage.getItem('token') ? true : null,
                 loading: false,
-                token: payload.token
                 }
         case CREATE_USER_FAIL:
             return {
@@ -31,7 +29,6 @@ const appCrud = (state, action) => {
         default:
             return state
     }
-
 }
 
 export default appCrud;

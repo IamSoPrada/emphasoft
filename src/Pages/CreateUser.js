@@ -33,7 +33,7 @@ const CreateUser = ({ create}) => {
                 <title>Создать аккаунт</title>
                 <meta
                     name='description'
-                    content='sign up page'
+                    content='create user page'
                 />
             </Helmet>
             <h1 className='auth__title'>Создать аккаунт</h1>
@@ -56,6 +56,7 @@ const CreateUser = ({ create}) => {
                         placeholder='Пароль'
                         name='password'
                         value={password}
+                        pattern = "^(?=.*[A-Z])(?=.*\d).{8,}$"
                         onChange={e => onChange(e)}
                         required
                     />
